@@ -18,6 +18,7 @@
 #define MOUSEKEY_MOVE_DELTA 2
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6
 #define DYNAMIC_KEYMAP_MACRO_COUNT 24
+#define TAP_CODE_DELAY 20
 
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
@@ -46,8 +47,8 @@
 #    define RGB_MATRIX_BRIGHTNESS_TURN_OFF_VAL 32
 
 /* Indications */
-#    define NUM_LOCK_INDEX 37
-#    define CAPS_LOCK_INDEX 61
+//#    define NUM_LOCK_INDEX 37
+//#    define CAPS_LOCK_INDEX 61
 #    define LOW_BAT_IND_INDEX \
         { 97 }
 

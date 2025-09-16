@@ -55,9 +55,10 @@
             "pixel_rain": true,
             "rainbow_beacon": true,
             "rainbow_moving_chevron": true,
+            "solid_reactive": true,
+            "solid_reactive_simple": true,
             "solid_reactive_multinexus": true,
             "solid_reactive_multiwide": true,
-            "solid_reactive_simple": true,
             "solid_splash": true,
             "splash": true,
             "typing_heatmap": true
