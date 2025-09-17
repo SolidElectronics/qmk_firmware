@@ -192,8 +192,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                         );
                     }
                 }
-                // Only show indicators on function layer so as not to interfere with normal backlighting.
-                // Could also put this on the main layer and just set black if inactive with normal lighting otherwise.
+                // Show white/black indicators on function layer so as not to interfere with normal backlighting.
                 if (current_layer == WIN_FN) {
                     switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
                         case KC_NUM:
@@ -214,6 +213,25 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                             if (host_keyboard_led_state().scroll_lock) {
                                 rgb_matrix_set_color(index, RGB_WHITE);
                             } else {
+                                rgb_matrix_set_color(index, RGB_BLACK);
+                            }
+                            break;
+                    }
+                } else {
+                    // Black out inactive indicators on other layers
+                    switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
+                        case KC_NUM:
+                            if (! host_keyboard_led_state().num_lock) {
+                                rgb_matrix_set_color(index, RGB_BLACK);
+                            }
+                            break;
+                        case KC_CAPS:
+                            if (! host_keyboard_led_state().caps_lock) {
+                                rgb_matrix_set_color(index, RGB_BLACK);
+                            }
+                            break;
+                        case KC_SCRL:
+                            if (! host_keyboard_led_state().scroll_lock) {
                                 rgb_matrix_set_color(index, RGB_BLACK);
                             }
                             break;
