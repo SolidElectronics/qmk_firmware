@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  QK_MACRO_7,  QK_MACRO_8,  QK_MACRO_9,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                     _______,                                  QK_MACRO_4,  QK_MACRO_5,  QK_MACRO_6,  _______,
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                     _______,              _______,            QK_MACRO_1,  QK_MACRO_2,  QK_MACRO_3,
-        _______,  _______,  _______,                                _______,                                _______,  _______,  KC_TRNS,           KC_TRNS,    _______,  _______,  _______,  _______,                  _______,     _______
+        _______,  _______,  _______,                                _______,                                _______,  _______,  KC_TRNS,           KC_TRNS,    _______,  _______,  _______,  QK_MACRO_0,               _______,     _______
 	)
 };
 
@@ -193,6 +193,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                     }
                 }
                 // Only show indicators on function layer so as not to interfere with normal backlighting.
+                // Could also put this on the main layer and just set black if inactive with normal lighting otherwise.
                 if (current_layer == WIN_FN) {
                     switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
                         case KC_NUM:

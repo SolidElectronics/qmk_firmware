@@ -24,7 +24,7 @@
                   ["None", 0],
                   ["Solid Color", 1],
                   ["Breathing", 2],
-                  ["Band Spiral Val", 3],
+                  ["Band Spiral", 3],
                   ["Cycle All", 4],
                   ["Cycle Left Right", 5],
                   ["Cycle Up Down", 6],
@@ -40,10 +40,12 @@
                   ["Typing Heatmap", 16],
                   ["Digital Rain", 17],
                   ["Reactive Simple", 18],
-                  ["Reactive Multiwide", 19],
-                  ["Reactive Multinexus", 20],
-                  ["Splash", 21],
-                  ["Solid Splash", 22]
+                  ["Reactive", 19],
+                  ["Reactive Multi-wide", 20],
+                  ["Reactive Multi-cross", 21],
+                  ["Reactive Multi-nexus", 22],
+                  ["Splash", 23],
+                  ["Solid Splash", 24]
                 ]
               },
               {
@@ -81,6 +83,7 @@
       {"name": "Bluetooth Host 3", "title": "Bluetooth Host 3", "shortName": "BTH3"},
       {"name": "2.4G", "title": "2.4G", "shortName": "2.4G"},
       {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"}
+      {"name": "Mouse jiggle", "title": "Mouse jiggler toggle", "shortName": "M_JIGL"}
     ],
     "matrix": {"rows": 6, "cols" : 21},
     "layouts": {
