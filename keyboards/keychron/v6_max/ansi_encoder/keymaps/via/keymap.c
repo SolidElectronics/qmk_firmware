@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,                                  _______,  _______,  _______,  _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,  
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,            _______,  _______),
     [WIN_BASE] = LAYOUT_ansi_109(
         KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,     KC_MUTE,    KC_PSCR,  KC_CTANA, RGB_MOD,  _______,  _______,  _______,  _______,
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,                                  _______,  _______,  _______,  _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,  
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,            _______,  _______)
 };
 */
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,  _______,  _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,                                  _______,  _______,  _______,  _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,  
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,            _______,  _______,  _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,    _______,  _______,  _______,  _______,            _______,  _______
 	),
     [WIN_BASE] = LAYOUT_ansi_109(
@@ -107,11 +107,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  BT_HST1,  BT_HST2,  BT_HST3,  P2P4G,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  KC_NUM,      _______,     _______,     _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  _______,     _______,     _______,
         KC_CAPS,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,                     _______,                                  _______,     _______,     _______,     _______,
-        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,                     _______,              _______,            _______,     _______,     _______,  
+        _______,            _______,  _______,  _______,  _______,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,  _______,                     _______,              _______,            _______,     _______,     _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  KC_TRNS,           MO(MACRO1), _______,  _______,  _______,  _______,                  _______,     _______
 	),
 	[MACRO1] = LAYOUT_ansi_109(
-		_______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  M_JIGL,      _______,     _______,     _______,
+		_______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  M_JIGL,      _______,     _______,     QK_BOOT,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  _______,     _______,     _______,     _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,           _______,    _______,  _______,  _______,  QK_MACRO_7,  QK_MACRO_8,  QK_MACRO_9,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                     _______,                                  QK_MACRO_4,  QK_MACRO_5,  QK_MACRO_6,  _______,
@@ -177,68 +177,46 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 			// Mouse jiggle key light indicates status
 			// Put this on a temporary layer or modifier so it doesn't show all the time.
 			if (index >= led_min && index < led_max && index != NO_LED) {
-                if (keymap_key_to_keycode(current_layer, (keypos_t){col,row}) == M_JIGL) {
-                    if (is_mouse_jiggle_active) {
-                        rgb_matrix_set_color(index,
-                            (uint8_t) 0x20 * current_brightness / 0xFF,	// R
-                            (uint8_t) 0xCC * current_brightness / 0xFF,	// G
-                            (uint8_t) 0x20 * current_brightness	/ 0xFF	// B
-                        );
-                    } else {
-                        rgb_matrix_set_color(index,
-                            (uint8_t) 0xCC * current_brightness / 0xFF,	// R
-                            (uint8_t) 0x20 * current_brightness / 0xFF,	// G
-                            (uint8_t) 0x20 * current_brightness	/ 0xFF	// B
-                        );
-                    }
+                switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
+                    case M_JIGL:
+                        if (is_mouse_jiggle_active) {
+                            rgb_matrix_set_color(index,
+                                (uint8_t) 0x20 * current_brightness / 0xFF,	// R
+                                (uint8_t) 0xCC * current_brightness / 0xFF,	// G
+                                (uint8_t) 0x20 * current_brightness	/ 0xFF	// B
+                            );
+                        } else {
+                            rgb_matrix_set_color(index,
+                                (uint8_t) 0xCC * current_brightness / 0xFF,	// R
+                                (uint8_t) 0x00 * current_brightness / 0xFF,	// G
+                                (uint8_t) 0x00 * current_brightness	/ 0xFF	// B
+                            );
+                        }
+                        break;
+                    case KC_NUM:
+                        if (current_layer == WIN_FN) {
+                            (host_keyboard_led_state().num_lock) ? rgb_matrix_set_color(index, RGB_WHITE) : rgb_matrix_set_color(index, RGB_BLACK);
+                        } else {
+                            if (! host_keyboard_led_state().num_lock) { rgb_matrix_set_color(index, RGB_BLACK); }
+                        }
+                        break;
+                    case KC_CAPS:
+                        if (current_layer == WIN_FN) {
+                            (host_keyboard_led_state().caps_lock) ? rgb_matrix_set_color(index, RGB_WHITE) : rgb_matrix_set_color(index, RGB_BLACK);
+                        } else {
+                            if (! host_keyboard_led_state().caps_lock) { rgb_matrix_set_color(index, RGB_BLACK); }
+                        }
+                        break;
+                    case KC_SCRL:
+                        if (current_layer == WIN_FN) {
+                            (host_keyboard_led_state().scroll_lock) ? rgb_matrix_set_color(index, RGB_WHITE) : rgb_matrix_set_color(index, RGB_BLACK);
+                        } else {
+                            if (! host_keyboard_led_state().scroll_lock) { rgb_matrix_set_color(index, RGB_BLACK); }
+                        }
+                        break;
                 }
-                // Show white/black indicators on function layer so as not to interfere with normal backlighting.
-                if (current_layer == WIN_FN) {
-                    switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
-                        case KC_NUM:
-                            if (host_keyboard_led_state().num_lock) {
-                                rgb_matrix_set_color(index, RGB_WHITE);
-                            } else {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                        case KC_CAPS:
-                            if (host_keyboard_led_state().caps_lock) {
-                                rgb_matrix_set_color(index, RGB_WHITE);
-                            } else {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                        case KC_SCRL:
-                            if (host_keyboard_led_state().scroll_lock) {
-                                rgb_matrix_set_color(index, RGB_WHITE);
-                            } else {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                    }
-                } else {
-                    // Black out inactive indicators on other layers
-                    switch (keymap_key_to_keycode(current_layer, (keypos_t){col,row})) {
-                        case KC_NUM:
-                            if (! host_keyboard_led_state().num_lock) {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                        case KC_CAPS:
-                            if (! host_keyboard_led_state().caps_lock) {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                        case KC_SCRL:
-                            if (! host_keyboard_led_state().scroll_lock) {
-                                rgb_matrix_set_color(index, RGB_BLACK);
-                            }
-                            break;
-                    }
-                }
-			}
+            }
 		}
 	}
-	return false;
+	return true;
 }

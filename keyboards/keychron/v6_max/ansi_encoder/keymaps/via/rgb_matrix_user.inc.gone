@@ -1,0 +1,46 @@
+// !!! DO NOT ADD #pragma once !!! //
+
+// Step 1.
+// Declare custom effects using the RGB_MATRIX_EFFECT macro
+// (note the lack of semicolon after the macro!)
+RGB_MATRIX_EFFECT(SOLID_REACTIVE_SPLASH)
+
+// Step 2.
+// Define effects inside the `RGB_MATRIX_CUSTOM_EFFECT_IMPLS` ifdef block
+#ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+
+bool SOLID_REACTIVE_SPLASH(effect_params_t* params) {
+    RGB_MATRIX_USE_LIMITS(led_min, led_max);
+
+    for (uint8_t i = led_min; i < led_max; i++) {
+        HSV hsv = rgb_matrix_config.hsv;
+
+        // Only process the most recent keypress (index 0)
+        if (g_last_hit_tracker.count > 0) {
+            // Calculate distance from most recent pressed key
+            int16_t dx = g_led_config.point[i].x - g_led_config.point[g_last_hit_tracker.index[0]].x;
+            int16_t dy = g_led_config.point[i].y - g_led_config.point[g_last_hit_tracker.index[0]].y;
+            uint8_t dist = sqrt16(dx * dx + dy * dy);
+
+            // Get time since keypress
+            uint8_t tick = g_last_hit_tracker.tick[0];
+
+            // Apply your effect formula
+            //uint16_t effect = tick + dist * 5;
+            //hsv.h += qsub8(180, effect);
+            uint16_t effect = tick;
+
+            if (dist == 0) {
+                hsv.h += qsub8(127, effect);
+            }
+
+        }
+
+        RGB rgb = hsv_to_rgb(hsv);
+        rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+    }
+
+    return led_max < RGB_MATRIX_LED_COUNT;
+}
+
+#endif // RGB_MATRIX_CUSTOM_EFFECT_IMPLS

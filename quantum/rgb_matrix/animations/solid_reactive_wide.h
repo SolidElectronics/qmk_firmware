@@ -17,10 +17,7 @@ static HSV SOLID_REACTIVE_WIDE_math(HSV hsv, int16_t dx, int16_t dy, uint8_t dis
 #            ifdef RGB_MATRIX_SOLID_REACTIVE_GRADIENT_MODE
     hsv.h = scale16by8(g_rgb_timer, qadd8(rgb_matrix_config.speed, 8) >> 4);
 #            endif
-    //hsv.v = qadd8(hsv.v, 255 - effect);
-    // Use solid color background instead of black.  Start at 180 degrees and ramp back to zero
-    hsv.v = 255;
-    hsv.h += qsub8(180, effect);
+    hsv.v = qadd8(hsv.v, 255 - effect);
     return hsv;
 }
 
