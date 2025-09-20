@@ -114,3 +114,4 @@ via*.json
 
 # Keep firmware file
 !keyboards/keychron/*/firmware/*.bin
+qmk_firmware_Keychron-wireless.sln
