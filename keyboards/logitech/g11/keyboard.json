@@ -10,7 +10,8 @@
         "mousekey": false,
         "encoder": true,
         "nkro": true,
-        "backlight": true
+        "backlight": true,
+        "console": true
     },
     "matrix_pins": {
         "direct": [
@@ -25,7 +26,7 @@
         "pid": "0x2049"
     },
     "backlight": {
-        "pin": "GP12",
+        "pin": "GP28",
         "driver": "software",
         "levels": 5
     },

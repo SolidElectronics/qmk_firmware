@@ -40,7 +40,7 @@
 //#define MATRIX_ROWS 24
 //#define MATRIX_COLS 32
 
-//#define DYNAMIC_KEYMAP_MACRO_COUNT 64
+#define DYNAMIC_KEYMAP_MACRO_COUNT 64
 
 //#define BACKLIGHT_PIN       GP12
 

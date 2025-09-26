@@ -1,2 +1,2 @@
 EEPROM_DRIVER = wear_leveling
-ENCODER_ENABLE = yes
+#ENCODER_ENABLE = yes
