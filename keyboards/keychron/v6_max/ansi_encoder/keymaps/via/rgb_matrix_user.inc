@@ -12,7 +12,6 @@ bool SOLID_REACTIVE_SPLASH(effect_params_t* params) {
     for (uint8_t i = led_min; i < led_max; i++) {
         // Start with solid background color
         HSV hsv = base_hsv;
-        hsv.v = 255;
 
         uint16_t total_hue_shift = 0;  // Accumulate hue shifts from all active splashes
         bool has_active_splash = false;
