@@ -10,16 +10,16 @@
 #include QMK_KEYBOARD_H
 //#include "action.h"
 
-#define HW_SW_LAYER     GP13
-#define HW_IND_M1       GP14
+#define HW_SW_LAYER     GP27
+#define HW_IND_M1       GP26
 #define HW_IND_M2       GP15
-#define HW_IND_M3       GP26
-#define HW_IND_MR       GP27
+#define HW_IND_M3       GP14
+#define HW_IND_MR       GP13
 
 enum layers{
-  _LAYER0,
-  _LAYER1,
-  _LAYER2
+  _LAYER0
+  //_LAYER1,
+  //_LAYER2
 };
 
 // This is a forward declaration.  These functions exist, but aren't declared when this compiles.  This lets the compiler ignore that fact and fix it during linking.
@@ -112,10 +112,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 case _LAYER0:
                     (clockwise) ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
                     break;
-                case _LAYER1:
-                    // This only works if you directly call the backlight functions.  tap_code16(BL_UP or BL_DOWN) doesn't work.
-                    (clockwise) ? backlight_increase() : backlight_decrease();
-                    break;
+//                case _LAYER1:
+//                    // This only works if you directly call the backlight functions.  tap_code16(BL_UP or BL_DOWN) doesn't work.
+//                    (clockwise) ? backlight_increase() : backlight_decrease();
+//                    break;
             }
             break;
 
@@ -168,7 +168,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
-     * [M1] [M2] [M3] [MR]                        [Fwd|Back|Stop|Play]      [Mute] [Backlight]
+     * [M1] [M2] [M3] [MR]                        [Back|Fwd|Stop|Play]      [Mute] [Backlight]
      * ┌───┬───┬───┐
      * |G1 |G2 |G3 | ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
      * ├───┼───┼───┤ │Esc│   │F1 │F2 │F3 │F4 │ │F5 │F6 │F7 │F8 │ │F9 │F10│F11│F12│ │PSc│Scr│Pse│
@@ -218,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 */
-
+/*
 // Test definitions
     [_LAYER0] = LAYOUT(
 		BL_UP, BL_DOWN
@@ -229,4 +229,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_LAYER2] = LAYOUT(
 		KC_MPRV, KC_MPLY
 	)
+};
+*/
+/*
+    [_LAYER0] = LAYOUT(
+        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,
+        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,
+        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM,
+        KC_ESC,  KC_TAB,  KC_LSFT, KC_LCTL, KC_LALT, KC_SPC,  KC_ENT,  KC_BSPC,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,
+        KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_HOME, KC_END,  KC_PGUP, KC_PGDN,
+        KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_P4,   KC_P5,   KC_P6,   KC_P7
+    )
+*/
+    [_LAYER0] = LAYOUT(
+        KC_A,       KC_B,   KC_C,   KC_D,   KC_MUTE,    BL_TOGG,
+        QK_BOOT,    KC_1,   KC_2
+    )
 };

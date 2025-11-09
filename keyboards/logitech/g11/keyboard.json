@@ -10,13 +10,11 @@
         "mousekey": false,
         "encoder": true,
         "nkro": true,
-        "backlight": true,
-        "console": true
+        "backlight": true
     },
     "matrix_pins": {
-        "direct": [
-            ["GP18", "GP19"]
-        ]
+        "cols": ["NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"],
+        "rows": ["NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN", "NO_PIN"]
     },
     "processor": "RP2040",
     "url": "",
@@ -31,21 +29,33 @@
         "levels": 5
     },
     "indicators": {
-        "num_lock": "GP10",
-        "caps_lock": "GP9",
-        "scroll_lock": "GP8"
+        "num_lock": "GP2",
+        "caps_lock": "GP1",
+        "scroll_lock": "GP0"
     },
     "encoder": {
         "rotary": [
-            {"pin_a": "GP6", "pin_b": "GP7"}
+            {"pin_a": "GP10", "pin_b": "GP9"}
         ]
     },
     "layouts": {
         "LAYOUT": {
             "layout": [
-                {"matrix": [0, 0], "x": 0, "y": 0},
-                {"matrix": [0, 1], "x": 1, "y": 0}
+                // Physical to logical mapping.  These are indexed to the layouts in keymap.c and should have the same number of entries.
+                {"matrix": [24, 12], "x": 0, "y": 0},   // media back
+                {"matrix": [24, 13], "x": 0, "y": 0},   // media fwd
+                {"matrix": [25, 12], "x": 0, "y": 0},   // media stop
+                {"matrix": [25, 13], "x": 0, "y": 0},   // media play
+                {"matrix": [ 5, 19], "x": 0, "y": 0},   // Mute
+                {"matrix": [15, 22], "x": 0, "y": 0},   // Backlight
+
+                {"matrix": [16, 22], "x": 0, "y": 1},   // G1
+                {"matrix": [19, 24], "x": 1, "y": 1},   // G2
+                {"matrix": [17, 27], "x": 2, "y": 1},   // G3
+
             ]
         }
     }
+
+
 }
