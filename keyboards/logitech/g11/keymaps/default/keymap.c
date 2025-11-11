@@ -10,7 +10,7 @@
 #include QMK_KEYBOARD_H
 //#include "action.h"
 
-#define HW_SW_LAYER     GP27
+#define HW_SW_LAYER     GP27    // Physical switch
 #define HW_IND_M1       GP26
 #define HW_IND_M2       GP15
 #define HW_IND_M3       GP14
@@ -92,7 +92,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Scan routine
 void matrix_scan_user(void) {
     static bool last_layer_switch = false;
-    bool layer_switch = !readPin(HW_SW_LAYER);
+    bool layer_switch = readPin(HW_SW_LAYER);
 
     if (layer_switch != last_layer_switch) {
         if (layer_switch) {
@@ -187,40 +187,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ANSI 104 + 18 G-keys + 10 other functions = 132 keys
      */
 
-/*
-// Full-size definitions
-    [_LAYER0] = LAYOUT_ansi_104(
-        _______,     _______,     _______,      _______,                                                       KC_MNXT, KC_MPRV, KC_MSTP, KC_MPLY,                   KC_MUTE,    BL_STEP,
-        QK_MACRO_1,  QK_MACRO_2,  QK_MACRO_3,   KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SCRL, KC_PAUS,
-        QK_MACRO_4,  QK_MACRO_5,  QK_MACRO_6,   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,    KC_INS,  KC_HOME, KC_PGUP,    KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
-        QK_MACRO_7,  QK_MACRO_8,  QK_MACRO_9,   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN,    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
-        QK_MACRO_10, QK_MACRO_11, QK_MACRO_12,  KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                   KC_P4,   KC_P5,   KC_P6,
-        QK_MACRO_13, QK_MACRO_14, QK_MACRO_15,  KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,               KC_P1,   KC_P2,   KC_P3,   KC_PENT,
-        QK_MACRO_16, QK_MACRO_17, QK_MACRO_18,  KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT
-    ),
-    [_LAYER1] = LAYOUT_ansi_104(
-        _______,     _______,     _______,      _______,                                                       KC_MNXT, KC_MPRV, KC_MSTP, KC_MPLY,                   KC_MUTE,    BL_STEP,
-        G11_M19,     G11_M20,     G11_M21,      KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SCRL, KC_PAUS,
-        G11_M22,     G11_M23,     G11_M24,      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,    KC_INS,  KC_HOME, KC_PGUP,    KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
-        G11_M25,     G11_M26,     G11_M27,      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN,    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
-        G11_M28,     G11_M29,     G11_M30,      KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                   KC_P4,   KC_P5,   KC_P6,
-        G11_M31,     G11_M32,     G11_M33,      KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,               KC_P1,   KC_P2,   KC_P3,   KC_PENT,
-        G11_M34,     G11_M35,     G11_M36,      KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT
-    ),
-    [_LAYER2] = LAYOUT_ansi_104(
-        _______,     _______,     _______,      _______,                                                       KC_MNXT, KC_MPRV, KC_MSTP, KC_MPLY,                   KC_MUTE,    BL_STEP,
-        G11_M37,     G11_M38,     G11_M39,      KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_PSCR, KC_SCRL, KC_PAUS,
-        G11_M40,     G11_M41,     G11_M42,      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,    KC_INS,  KC_HOME, KC_PGUP,    KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
-        G11_M43,     G11_M44,     G11_M45,      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,    KC_DEL,  KC_END,  KC_PGDN,    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
-        G11_M46,     G11_M47,     G11_M48,      KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,                                   KC_P4,   KC_P5,   KC_P6,
-        G11_M49,     G11_M50,     G11_M51,      KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT,             KC_UP,               KC_P1,   KC_P2,   KC_P3,   KC_PENT,
-        G11_M52,     G11_M53,     G11_M54,      KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,    KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT
-    )
-};
-*/
-
     [_LAYER0] = LAYOUT(
-                     KC_NO,       TO(1),        QK_BOOT,                                     KC_MPRV, KC_MNXT, KC_MSTP, KC_MPLY,                            KC_MUTE, BL_STEP,
+        TO(0),       TO(1),       TO(2),        QK_BOOT,                                     KC_MPRV, KC_MNXT, KC_MSTP, KC_MPLY,                            KC_MUTE, BL_STEP,
         QK_MACRO_1,  QK_MACRO_2,  QK_MACRO_3,   KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,  KC_SCRL, KC_PAUS,
         QK_MACRO_4,  QK_MACRO_5,  QK_MACRO_6,   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,  KC_INS,  KC_HOME, KC_PGUP,  KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
         QK_MACRO_7,  QK_MACRO_8,  QK_MACRO_9,   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,  KC_DEL,  KC_END,  KC_PGDN,  KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
@@ -229,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_MACRO_16, QK_MACRO_17, QK_MACRO_18,  KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_P0,            KC_PDOT
     ),
     [_LAYER1] = LAYOUT(
-                     _______,     TO(2),        _______,                                     _______, _______, _______, _______,                            _______, BL_TOGG,
+        _______,     _______,     _______,      _______,                                     _______, _______, _______, _______,                            _______, BL_TOGG,
         G11_M19,     G11_M20,     G11_M21,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         G11_M22,     G11_M23,     G11_M24,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         G11_M25,     G11_M26,     G11_M27,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -238,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         G11_M34,     G11_M35,     G11_M36,      _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______, _______, _______,          _______
     ),
     [_LAYER2] = LAYOUT(
-                     _______,     TO(0),        _______,                                     _______, _______, _______, _______,                            _______, _______,
+        _______,     _______,     _______,      _______,                                     _______, _______, _______, _______,                            _______, _______,
         G11_M37,     G11_M38,     G11_M39,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         G11_M40,     G11_M41,     G11_M42,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         G11_M43,     G11_M44,     G11_M45,      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,

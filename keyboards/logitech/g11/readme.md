@@ -26,6 +26,8 @@ Enter the bootloader in 3 ways:
 * **Physical reset button**: Briefly press the button on the back of the PCB - some may have pads you must short instead
 * **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
 
+
+https://www.keyboard-layout-editor.com/#/
 ```
 ["M1","M2","M3","MR",{x:14},"Mute",{x:0.25},"BL"],
 ["G1","G2","G3",{x:1.5},"Esc",{x:0.5},"F1","F2","F3","F4",{x:0.5},"F5","F6","F7","F8",{x:0.5},"F9","F10","F11","F12",{x:0.25},"PrtSc","Scroll Lock","Pause\nBreak"],
