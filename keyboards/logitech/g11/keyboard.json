@@ -20,7 +20,7 @@
     "url": "",
     "usb": {
         "device_version": "1.0.0",
-        "vid": "0xFEED",
+        "vid": "0xFEEA",
         "pid": "0x2049"
     },
     "backlight": {
@@ -37,6 +37,9 @@
         "rotary": [
             {"pin_a": "GP10", "pin_b": "GP9"}
         ]
+    },
+    "via": {
+        "protocol_version": 12
     },
     "layouts": {
         "LAYOUT": {
