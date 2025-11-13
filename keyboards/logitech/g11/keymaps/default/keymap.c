@@ -7,98 +7,11 @@
 
 #include QMK_KEYBOARD_H
 
-#define HW_SW_GAME      GP27
-#define HW_IND_M1       GP26
-#define HW_IND_M2       GP15
-#define HW_IND_M3       GP14
-#define HW_IND_MR       GP13
-
 enum layers{
   _LAYER0,
   _LAYER1,
   _LAYER2
 };
-
-// This is a forward declaration.  These functions exist, but aren't declared when this compiles.  This lets the compiler ignore that fact and fix it during linking.
-void backlight_increase(void);
-void backlight_decrease(void);
-
-// Initialize (early)
-void keyboard_pre_init_user(void) {
-    setPinOutput(HW_IND_M1);
-    setPinOutput(HW_IND_M2);
-    setPinOutput(HW_IND_M3);
-    setPinOutput(HW_IND_MR);
-    setPinInputHigh(HW_SW_GAME);
-    writePinLow(HW_IND_MR);
-
-}
-
-// Initialize (late)
-void keyboard_post_init_user(void) {
-  debug_enable=true;
-  debug_matrix=true;
-  debug_keyboard=true;
-  debug_mouse=true;
-  tap_code16(QK_BACKLIGHT_ON);
-}
-
-// Layer change handler
-layer_state_t layer_state_set_user(layer_state_t state) {
-    writePinLow(HW_IND_M1);
-    writePinLow(HW_IND_M2);
-    writePinLow(HW_IND_M3);
-    switch (get_highest_layer(state)) {
-        case 0:
-            writePinHigh(HW_IND_M1);
-            break;
-        case 1:
-            writePinHigh(HW_IND_M2);
-            break;
-        case 2:
-            writePinHigh(HW_IND_M3);
-            break;
-    }
-    return state;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    #ifdef CONSOLE_ENABLE
-    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-    #endif
-
-    // Normal/Game switch handler
-    if (readPin(HW_SW_GAME)) {
-        switch (keycode) {
-            case KC_LGUI:
-            case KC_RGUI:
-            case KC_APP:
-                return false;
-        }
-    }
-    return true;
-}
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    switch (index) {
-        // Encoder number
-        case 0:
-            switch (get_highest_layer(layer_state)) {
-                case _LAYER0:
-                case _LAYER1:
-                case _LAYER2:
-                    (clockwise) ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
-                    break;
-//                case _LAYER1:
-//                    // This only works if you directly call the backlight functions.  tap_code16(BL_UP or BL_DOWN) doesn't work.
-//                    (clockwise) ? backlight_increase() : backlight_decrease();
-//                    break;
-            }
-            break;
-
-    }
-    return false;
-}
 
 // Declare macros as custom keycodes, otherwise there is a limit of 32 QK_MACRO_## codes.
 enum custom_keycodes {
@@ -191,3 +104,85 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         G11_M52,     G11_M53,     G11_M54,      _______, _______, _______,                            _______,                            _______, _______, _______,  _______, _______, _______, _______, _______,          _______
     )
 };
+
+
+// This is a forward declaration.  These functions exist, but aren't declared when this compiles.  This lets the compiler ignore that fact and fix it during linking.
+void backlight_increase(void);
+void backlight_decrease(void);
+
+// Initialize (early)
+void keyboard_pre_init_user(void) {
+    setPinOutput(HW_IND_M1);
+    setPinOutput(HW_IND_M2);
+    setPinOutput(HW_IND_M3);
+    setPinOutput(HW_IND_MR);
+    setPinInputHigh(HW_SW_GAME);
+    writePinLow(HW_IND_MR);
+
+}
+
+// Initialize (late)
+void keyboard_post_init_user(void) {
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+  debug_mouse=true;
+  tap_code16(QK_BACKLIGHT_ON);
+}
+
+// Layer change handler
+layer_state_t layer_state_set_user(layer_state_t state) {
+    writePinLow(HW_IND_M1);
+    writePinLow(HW_IND_M2);
+    writePinLow(HW_IND_M3);
+    switch (get_highest_layer(state)) {
+        case 0:
+            writePinHigh(HW_IND_M1);
+            break;
+        case 1:
+            writePinHigh(HW_IND_M2);
+            break;
+        case 2:
+            writePinHigh(HW_IND_M3);
+            break;
+    }
+    return state;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+    #endif
+
+    // Normal/Game switch handler
+    if (readPin(HW_SW_GAME)) {
+        switch (keycode) {
+            case KC_LGUI:
+            case KC_RGUI:
+            case KC_APP:
+                return false;
+        }
+    }
+    return true;
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    switch (index) {
+        // Encoder number
+        case 0:
+            switch (get_highest_layer(layer_state)) {
+                case _LAYER0:
+                case _LAYER1:
+                case _LAYER2:
+                    (clockwise) ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
+                    break;
+//                case _LAYER1:
+//                    // This only works if you directly call the backlight functions.  tap_code16(BL_UP or BL_DOWN) doesn't work.
+//                    (clockwise) ? backlight_increase() : backlight_decrease();
+//                    break;
+            }
+            break;
+
+    }
+    return false;
+}

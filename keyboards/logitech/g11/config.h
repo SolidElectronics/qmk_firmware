@@ -39,6 +39,8 @@
 #define MATRIX_COLS     32
 
 #define WEAR_LEVELING_BACKING_SIZE 65536  // Max amount of memory available as flash on RP2040
+#define DYNAMIC_MACRO_NO_NESTING
+#define DISABLE_LEADER
 
 // Matrix pins are defined here
 #define ROW_DATA_PIN    GP5
@@ -52,12 +54,22 @@
 #define SW_A_PIN        GP11
 #define SW_B_PIN        GP12
 
+#define HW_SW_GAME      GP27
+#define HW_IND_M1       GP26
+#define HW_IND_M2       GP15
+#define HW_IND_M3       GP14
+#define HW_IND_MR       GP13
+
 #define DEBUG_ENABLE    false
 #define DEBUG_MATRIX    false
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 3
 #define DYNAMIC_KEYMAP_MACRO_COUNT 64
+#define TAP_CODE_DELAY 10
+#define MOUSEKEY_MOVE_DELTA 2
 
-#define DISABLE_LEADER
+// Top-left M1 key for BootMagic
+#define BOOTMAGIC_ROW 1
+#define BOOTMAGIC_COLUMN 13
 
 //#define ENCODER_DEFAULT_POS 0x3
