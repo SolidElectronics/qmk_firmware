@@ -61,6 +61,12 @@ bool mouse_jiggle_direction = false;            // used to alternate direction
 uint16_t mouse_jiggle_frequency = 60000;        // how often to move the mouse (ms)
 uint16_t mouse_jiggle_timer = 0;
 
+// 30 minute layer timeout
+#define LAYER_TIMEOUT 1800000
+static uint32_t layer_timer = 0;
+
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * [M1] [M2] [M3] [MR]                        [Back|Fwd|Stop|Play]      [Mute] [Backlight]
@@ -144,12 +150,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case 0:
             writePinHigh(HW_IND_M1);
+            layer_timer = 0;
             break;
         case 1:
             writePinHigh(HW_IND_M2);
+            layer_timer = timer_read();
             break;
         case 2:
             writePinHigh(HW_IND_M3);
+            layer_timer = timer_read();
             break;
     }
     return state;
@@ -168,6 +177,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			}
 		break;
 	}
+
+    // Reset running layer timer on any keypress
+    if (record->event.pressed && layer_timer) {
+        layer_timer = timer_read();
+    }
 
     // Normal/Game switch handler (do this last)
     if (readPin(HW_SW_GAME)) {
@@ -201,7 +215,11 @@ void matrix_scan_user(void) {
     } else {
         writePinLow(HW_IND_MR);
     }
-
+    // Handle layer reset
+    if (layer_timer && timer_elapsed(layer_timer) > LAYER_TIMEOUT) {
+        layer_clear();
+        layer_timer = 0;
+    }
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
