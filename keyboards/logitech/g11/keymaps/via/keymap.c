@@ -209,7 +209,7 @@ void matrix_scan_user(void) {
 			mouse_jiggle_direction = !mouse_jiggle_direction;
 		}
     }
-    // Show indicator on layer 3 only
+    // Show indicator on layer 2 only
     if (get_highest_layer(layer_state) == _LAYER2 && is_mouse_jiggle_active) {
         writePinHigh(HW_IND_MR);
     } else {

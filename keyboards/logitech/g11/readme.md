@@ -25,8 +25,13 @@ Enter the bootloader in 3 ways:
 * **Bootmagic reset**: Hold down the key at (0,0) in the matrix (usually the top left key or Escape) and plug in the keyboard
 * **Physical reset button**: Briefly press the button on the back of the PCB - some may have pads you must short instead
 * **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
+  * Layer 2 (M3) -> Backlight button (top-right)
 
+## Mouse jiggle
+* Select layer 2 (M3)
+* MR button shows/sets jiggle mode
 
+## Layout
 https://www.keyboard-layout-editor.com/#/
 ```
 ["M1","M2","M3","MR",{x:14},"Mute",{x:0.25},"BL"],
